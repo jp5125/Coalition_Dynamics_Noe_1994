@@ -6,7 +6,7 @@ This repository contains a Python re-derivation and algorithmic implementation o
 
 In that sense, this project should be understood as both a re-derivation and an interpretation of Noe’s original model. The code is written with the intention that it can serve as a conceptual bridge between classic behavioral ecology theory and more modern computational or agent-based modeling approaches. Future extensions are planned and discussed below which extend the model beyond Noe's initial conceptualization and analysis.
 
-** I highly reccomend that you also read the `BACKGROUND_AND_DESIGN.md` document in this repository after viewing this file. It provides additional context that is key to understanding the model background and provides a formalization of Noe's original assumptions.
+**I highly reccomend that you also read the `BACKGROUND_AND_DESIGN.md` document in this repository after viewing this file. It provides additional context that is key to understanding the model background and provides a formalization of Noe's original assumptions.**
 
 
 ## The Original Model (Noe 1994)
