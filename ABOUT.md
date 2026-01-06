@@ -6,7 +6,6 @@ This repository contains a Python re-derivation and algorithmic implementation o
 
 In that sense, this project should be understood as both a re-derivation and an interpretation of Noë’s original model, with an emphasis on clarity, algorithmic structure, and reproducibility. The code is written with the intention that it can serve as a conceptual bridge between classic behavioral ecology theory and more modern computational or agent-based modeling approaches.
 
----
 
 ## The Original Model (Noë 1994)
 
@@ -14,7 +13,6 @@ In Noë (1994), the central problem being addressed is why lower-ranking male pr
 
 The key idea is that males are ranked by fighting ability, that this ranking determines who can plausibly challenge whom, and that coalition success depends on whether the combined fighting ability of two males exceeds that of a higher-ranking target male. Rather than modeling learning, reciprocity, or repeated interactions explicitly, Noë’s approach is primarily concerned with characterizing the *space of possible coalitions* available to males at different rank positions.
 
----
 
 ## Core Assumptions and Quantities
 
@@ -28,7 +26,6 @@ F_1 \ge F_2 \ge \dots \ge F_N
 
 Rank is treated as deterministic and fixed within a given evaluation of the model, meaning that the analysis asks what coalition opportunities exist *given* a particular ordering of fighting ability, rather than modeling how that ordering itself emerges.
 
----
 
 ### Coalition Feasibility
 
@@ -40,7 +37,6 @@ F_i + F_j > F_k
 
 Only males ranked higher than both coalition partners are considered valid targets, reflecting the assumption that coalitions are formed to challenge dominant individuals rather than lower-ranking ones. This simple inequality is the core constraint that generates the structure of coalition opportunities across the dominance hierarchy.
 
----
 
 ## Algorithmic Design Decisions
 
@@ -52,7 +48,6 @@ Rather than operating on individuals as abstract agents, the model works directl
 
 This design choice also makes the relationship between rank structure and coalition feasibility more transparent than it would be in a purely agent-based implementation.
 
----
 
 ### Partner and Target Constraints
 
@@ -60,7 +55,6 @@ The main function allows for explicit control over several aspects of coalition 
 
 These options are not intended to represent different biological hypotheses so much as they are tools for probing the sensitivity of the model to assumptions that are often left unstated.
 
----
 
 ### Counting Opportunities Rather Than Outcomes
 
@@ -68,7 +62,6 @@ Importantly, this model counts *coalition opportunities* rather than realized co
 
 This reflects the original analytical goal of Noë (1994), which was to describe the structural conditions under which coalitions are possible, rather than to model behavioral dynamics such as partner choice, negotiation, or reciprocity. Those processes are intentionally left to future extensions of the model.
 
----
 
 ## Core Functionality
 
@@ -76,3 +69,43 @@ The primary analytical work in this repository is performed by the function:
 
 ```python
 coalition_opportunities(F, top_targets=None, strict=True)
+```
+where `F` is a NumPy array of fighting abilities ordered from strongest to weakest. Optional arguments allow the user to restrict which ranks can be targeted by coalitions or to relax strict rank-ordering constraints.
+
+The function returns coalition opportunity counts by rank, which can be directly compared to the qualitative predictions and figures presented in Noë (1994). 
+
+
+## How to use this Program
+
+To use this mode, the user needs to specify a rank-ordered array of fighting abilities. For example:
+
+```python
+F = np.array([10.0, 9.2, 8.7, 7.5, 6.1])
+```
+Coalition opportunities for each pairing of coalitionary males can the be computed by calling:
+
+```python
+coalition_opportunities(F)
+```
+Optional parameters can be included to restrict target ranks (e.g. only top 3 ranking males can be targeted) or modify coalition constraints based on the analysis interests of the user.
+
+The code design is intended to be modular, allowing for the embedding of this model into larger simulations and parameter sweeps. The intention is to also ustilize this as a foundational program which allows for further model extensions.
+
+Once the `coalition_opportunity` function has been run with the users' specified parameter values, the `make_model_visuals` and `plot_sigmoid_function` functions are used to plot and visualize the rank-fighting ability curves and distribution of coalitionary male
+partner-target combinations possible within the model's state space. I reccomend using the `plot_sigmoid_function` as this captures the non-linear nature of the decline in male fightin abilities between ranks more accuratley than the `make_model_visuals` function. 
+
+
+## Current Scope and Future Extensions
+
+The repository as it currently exists meets the goal of re-deriving Noe's original mathematical model and implementing an algorithm to do the mathematical calculations for us. Apart from the design of the algorithm and visualization functions, none of the core
+intellectual contributions are extended beyond Noe's initial model. With that being said, I am planning on implementing novel model extensions which add additional mechanism components and adjust the model assumptions to capture biologically informed dynamics of the baboon system which have been abstracted away or ignored in Noe's original model. Planned extensions include:
+*** Asymmetrical Payoffs within Pairs of Coalition Partners
+*** Probabilistic, rather than Deterministic, Coalition Success
+*** Coalition Participation Costs
+*** Multi-Male Coalitions
+
+## Citation
+
+If you use or adapt this code, be sure to cite Noe's original work:
+
+Noë, R. (1994). A model of coalition formation among male baboons. Behavioral Ecology and Sociobiology.
