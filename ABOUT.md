@@ -105,10 +105,11 @@ partner-target combinations possible within the model's state space. I reccomend
 
 The repository as it currently exists meets the goal of re-deriving Noe's original mathematical model and implementing an algorithm to do the mathematical calculations for us. Apart from the design of the algorithm and visualization functions, none of the core
 intellectual contributions are extended beyond Noe's initial model. With that being said, I am planning on implementing novel model extensions which add additional mechanism components and adjust the model assumptions to capture biologically informed dynamics of the baboon system which have been abstracted away or ignored in Noe's original model. Planned extensions include:
-*Asymmetrical Payoffs within Pairs of Coalition Partners
-*Probabilistic, rather than Deterministic, Coalition Success
-*Coalition Participation Costs
-*Multi-Male Coalitions
+
+* Asymmetrical Payoffs within Pairs of Coalition Partners
+* Probabilistic, rather than Deterministic, Coalition Success
+* Coalition Participation Costs
+* Multi-Male Coalitions
 
 ## Citation
 
