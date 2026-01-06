@@ -5,3 +5,5 @@ A re-derivation of Ronald Noe's 1994 mathematical model of coalition formation d
 
 **If you are interested in a more detailed background of the model system or would like to see how I formalized the explicit assumptions of Noe(1994) mathematically when designing the algorithm, I also encourage you to read
 the `BACKGROUND_AND_DESIGN.md` file as well.**
+
+After viewing these documents, you can find the model code under `Noe_coalition_rederivation.ipynb`.
