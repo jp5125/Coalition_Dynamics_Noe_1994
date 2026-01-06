@@ -36,17 +36,20 @@ degree of steepness of this curve is permitted as long as all male fighting abil
 
 A coalition between two males \( i \) and \( j \) is considered capable of successfully challenging a target male \( k \) if the following condition holds:
 
-
-F_ij = c(F_i + F_j) and F_ij > F_k
-
-where c = a multiplicative factor (standard = 1, if set to c > 1 this indicates synergistic benefits to the coalition partners, while c < 1 is a detrimental synergy bonus)
+F_ij > F_k
+ 
+where:
+* F_ij = c(F_i + F_j)
+and: 
+* c = a multiplicative 'synergy' factor(standard = 1, if set to c > 1 this indicates synergistic benefits to the coalition partners, while c < 1 is a detrimental synergy in cases where partners try to take advantage of one another or don't coordinate well)
 
 Only males ranked higher than both coalition partners are considered valid targets, reflecting the assumption that coalitions are formed to challenge dominant individuals rather than lower-ranking ones. This simple inequality is the core constraint that generates the structure of coalition opportunities across the dominance hierarchy.
 
 
 ## Algorithmic Design Decisions
 
-This implementation makes several modeling decisions explicit that are either implicit or only loosely specified in the original paper, largely because translating the model into code requires that these ambiguities be resolved in a precise way.
+This implementation makes several modeling decisions explicit that are either implicit or only loosely specified in the original paper, largely because translating the model into code requires that these ambiguities be resolved in a precise way. To see the 
+full formalization of these assumptions and the justifications I made in designing them, please refer to the `BACKGROUND_AND_DESIGN` document.
 
 ### Rank-Based Computation
 
