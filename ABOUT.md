@@ -40,6 +40,7 @@ F_ij > F_k
  
 where:
 * F_ij = c(F_i + F_j)
+
 and: 
 * c = a multiplicative 'synergy' factor(standard = 1, if set to c > 1 this indicates synergistic benefits to the coalition partners, while c < 1 is a detrimental synergy in cases where partners try to take advantage of one another or don't coordinate well)
 
