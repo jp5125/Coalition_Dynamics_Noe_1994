@@ -20,9 +20,9 @@ The key idea is that males are ranked by fighting ability, that this ranking det
 
 Each male is assigned a scalar fighting ability \( F_i \), and individuals are ranked such that fighting ability decreases monotonically with rank:
 
-\[
-F_1 \ge F_2 \ge \dots \ge F_N
-\]
+
+F_1 >= F_2 >= ... F_N
+
 
 Rank is treated as deterministic and fixed within a given evaluation of the model, meaning that the analysis asks what coalition opportunities exist *given* a particular ordering of fighting ability, rather than modeling how that ordering itself emerges.
 
@@ -31,9 +31,9 @@ Rank is treated as deterministic and fixed within a given evaluation of the mode
 
 A coalition between two males \( i \) and \( j \) is considered capable of successfully challenging a target male \( k \) if the following condition holds:
 
-\[
+
 F_i + F_j > F_k
-\]
+
 
 Only males ranked higher than both coalition partners are considered valid targets, reflecting the assumption that coalitions are formed to challenge dominant individuals rather than lower-ranking ones. This simple inequality is the core constraint that generates the structure of coalition opportunities across the dominance hierarchy.
 
