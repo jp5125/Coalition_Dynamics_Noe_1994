@@ -2,14 +2,14 @@
 
 ## Overview
 
-This repository contains a Python re-derivation and algorithmic implementation of the coalition model originally introduced by Noë (1994) to explain patterns of male reproductive coalition formation in primates, particularly baboons. Rather than aiming to exactly reproduce the figures or numerical results of the original paper, the goal of this project is to make the underlying logic of the model explicit, to formalize the assumptions that are often left implicit in verbal or analytical treatments, and to translate the model into a transparent computational framework that can be inspected, modified, and extended.
+This repository contains a Python re-derivation and algorithmic implementation of the coalition model originally introduced by Noe (1994) to explain patterns of male reproductive coalition formation in primates, particularly baboons. Rather than aiming to exactly reproduce the figures or numerical results of the original paper, the goal of this project is to make the underlying logic of the model explicit, to formalize the assumptions that are often left implicit in verbal or analytical treatments, and to translate the model into a transparent computational framework that can be inspected, modified, and extended.
 
-In that sense, this project should be understood as both a re-derivation and an interpretation of Noë’s original model, with an emphasis on clarity, algorithmic structure, and reproducibility. The code is written with the intention that it can serve as a conceptual bridge between classic behavioral ecology theory and more modern computational or agent-based modeling approaches.
+In that sense, this project should be understood as both a re-derivation and an interpretation of Noe’s original model. The code is written with the intention that it can serve as a conceptual bridge between classic behavioral ecology theory and more modern computational or agent-based modeling approaches. Future extensions are planned and discussed below which extend the model beyond Noe's initial conceptualization and analysis.
 
 
-## The Original Model (Noë 1994)
+## The Original Model (Noe 1994)
 
-In Noë (1994), the central problem being addressed is why lower-ranking male primates sometimes form coalitions to challenge higher-ranking males for access to reproductive opportunities, even in cases where coalition partners may not share reproductive benefits equally. The model abstracts away many behavioral and ecological details in order to focus on a small number of structural constraints that determine whether coalitions are even feasible in the first place.
+In Noe (1994), the central problem being addressed is why lower-ranking male primates sometimes form coalitions to challenge higher-ranking males for access to reproductive opportunities, even in cases where coalition partners may not share reproductive benefits equally. The model abstracts away many behavioral and ecological details in order to focus on a small number of structural constraints that determine whether coalitions are even feasible in the first place.
 
 The key idea is that males are ranked by fighting ability, that this ranking determines who can plausibly challenge whom, and that coalition success depends on whether the combined fighting ability of two males exceeds that of a higher-ranking target male. Rather than modeling learning, reciprocity, or repeated interactions explicitly, Noë’s approach is primarily concerned with characterizing the *space of possible coalitions* available to males at different rank positions.
 
@@ -25,6 +25,10 @@ F_1 >= F_2 >= ... F_N
 
 
 Rank is treated as deterministic and fixed within a given evaluation of the model, meaning that the analysis asks what coalition opportunities exist *given* a particular ordering of fighting ability, rather than modeling how that ordering itself emerges.
+The 'steepness' of the rank-fighting ability curve is a key parameter in the model, as the magnitude of difference between male fighting abilities influences which partner-target combinations are possible. Changing the steepness changes the model results, and any 
+degree of steepness of this curve is permitted as long as all male fighting abilities are bounded such that:
+
+0 <= F_i <= 100, for all males
 
 
 ### Coalition Feasibility
@@ -32,7 +36,9 @@ Rank is treated as deterministic and fixed within a given evaluation of the mode
 A coalition between two males \( i \) and \( j \) is considered capable of successfully challenging a target male \( k \) if the following condition holds:
 
 
-F_i + F_j > F_k
+F_ij = c(F_i + F_j) and F_ij > F_k
+
+where c = a multiplicative factor (standard = 1, if set to c > 1 this indicates synergistic benefits to the coalition partners, while c < 1 is a detrimental synergy bonus)
 
 
 Only males ranked higher than both coalition partners are considered valid targets, reflecting the assumption that coalitions are formed to challenge dominant individuals rather than lower-ranking ones. This simple inequality is the core constraint that generates the structure of coalition opportunities across the dominance hierarchy.
